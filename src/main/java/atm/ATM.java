@@ -8,17 +8,17 @@ public class ATM {
 	private Customer loginCustomer;
 
 	/**
-     * Constructs an ATM for a bank.
+	 * Constructs an ATM for a bank.
 	 */
-	public ATM() {
-		this.bank = new Bank("My Bank");
+	public ATM(Bank bank) {
+		this.bank = bank;
 		this.loginCustomer = null;
 	}
 
 	/**
-     * Finds customer in bank.
+	 * Finds customer in bank.
 	 * @param id current customer id
-     * @param pin pin being inputted
+	 * @param pin pin being inputted
 	 */
 	public String validateCustomer(int id, int pin) {
 		Customer customer = bank.findCustomer(id);
@@ -31,24 +31,24 @@ public class ATM {
 	}
 
 	/**
-     * Withdraws amount from current account.
-     * @param amount the amount to withdraw
+	 * Withdraws amount from current account.
+	 * @param amount the amount to withdraw
 	 */
 	public void withdraw(double amount) {
 		loginCustomer.getAccount().withdraw(amount);
 	}
 
 	/**
-     * Deposits amount to current account.
-     * @param amount the amount to deposit
+	 * Deposits amount to current account.
+	 * @param amount the amount to deposit
 	 */
 	public void deposit(double amount) {
 		loginCustomer.getAccount().deposit(amount);
 	}
 
 	/**
-     * Gets the balance of the current account.
-     * @return the balance
+	 * Gets the balance of the current account.
+	 * @return the balance
 	 */
 	public double getBalance() {
 		return loginCustomer.getAccount().getBalance();

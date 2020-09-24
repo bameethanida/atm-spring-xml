@@ -1,7 +1,5 @@
 package atm;
 
-import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -11,14 +9,14 @@ public class Bank {
 
    private String name;
    private Map<Integer,Customer> customers;
-   private DataSourceDB dataSource;
+   private DataSource dataSource;
 
    /**
     * Constructs a bank with no customers.
     */
-   public Bank(String name) {
+   public Bank(String name, DataSource dataSource) {
       this.name = name;
-      this.dataSource = new DataSourceDB();
+      this.dataSource = dataSource;
       this.customers = dataSource.readCustomers();
    }
 
@@ -29,14 +27,14 @@ public class Bank {
    public void registerCustomer(Customer customer) {
       customers.put(customer.getId(), customer);
    }
-   
-   /** 
+
+   /**
     * Finds a customer in the bank.
     * @param id a customer id
     * @return the matching customer, or null if no customer
     * matches
     */
    public Customer findCustomer(int id) {
-	  return customers.get(id);
+      return customers.get(id);
    }
 }
